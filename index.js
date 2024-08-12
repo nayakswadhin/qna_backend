@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/question", (req, res) => {
-  const q = "SELECT * FROM question.qa";
+  const q = "SELECT * FROM bzr1y9jplzahkedywbh7.qa";
   db.query(q, (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
@@ -31,7 +31,7 @@ app.get("/question", (req, res) => {
 
 app.post("/question", (req, res) => {
   const q =
-    "INSERT INTO `question`.`qa` (`question`, `answer`, `hint`) VALUES (?)";
+    "INSERT INTO `bzr1y9jplzahkedywbh7`.`qa` (`question`, `answer`, `hint`) VALUES (?)";
   const values = [req.body.question, req.body.answer, req.body.hint];
   db.query(q, [values], (err, data) => {
     if (err) return res.json(err);
@@ -41,7 +41,7 @@ app.post("/question", (req, res) => {
 
 app.delete("/question/:id", (req, res) => {
   const bookId = req.params.id;
-  const q = "DELETE FROM `question`.`qa` WHERE id = ?";
+  const q = "DELETE FROM `bzr1y9jplzahkedywbh7`.`qa` WHERE id = ?";
 
   db.query(q, [bookId], (err, data) => {
     if (err) return res.json(err);
