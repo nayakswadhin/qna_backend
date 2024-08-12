@@ -31,7 +31,7 @@ app.get("/question", (req, res) => {
 
 app.post("/question", (req, res) => {
   const q =
-    "INSERT INTO `bzr1y9jplzahkedywbh7`.`qa` (`question`, `answer`, `hint`) VALUES (?)";
+    "INSERT INTO `bzr1y9jplzahkedywbh7`.`qa` (`question`, `answer`) VALUES (?)";
   const values = [req.body.question, req.body.answer, req.body.hint];
   db.query(q, [values], (err, data) => {
     if (err) return res.json(err);
