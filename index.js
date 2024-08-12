@@ -32,7 +32,7 @@ app.get("/question", (req, res) => {
 app.post("/question", (req, res) => {
   const q =
     "INSERT INTO `bzr1y9jplzahkedywbh7`.`qa` (`question`, `answer`) VALUES (?)";
-  const values = [req.body.question, req.body.answer, req.body.hint];
+  const values = [req.body.question, req.body.answer];
   db.query(q, [values], (err, data) => {
     if (err) return res.json(err);
     return res.json({ question: req.body.question, answer: req.body.answer });
