@@ -6,6 +6,7 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
+app.use(cors());
 
 const db = mysql.createConnection({
   host: process.env.HOST,
@@ -15,7 +16,6 @@ const db = mysql.createConnection({
 });
 
 app.use(express.json());
-app.use(cors());
 
 app.get("/", (req, res) => {
   return res.json("Health is Good");
@@ -74,7 +74,7 @@ app.put("/question/:id", (req, res) => {
 app.delete("/questions", (req, res) => {
   const quesIds = req.body.data;
   const query = "DELETE FROM `bzr1y9jplzahkedywbh7`.`qa` WHERE id IN (?)";
-  if (!Array.isArray(quesIds) || quesIds.length == 0) {
+  if (quesIds.length == 0) {
     return res.status(400).json("No ids to be deleted!!");
   }
   db.query(query, [quesIds], (err, data) => {
