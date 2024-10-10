@@ -72,7 +72,7 @@ app.put("/question/:id", (req, res) => {
 });
 
 app.delete("/questions", (req, res) => {
-  const quesIds = req.body.data;
+  const quesIds = req.body;
   const query = "DELETE FROM `bzr1y9jplzahkedywbh7`.`qa` WHERE id IN (?)";
   if (quesIds.length == 0) {
     return res.status(400).json("No ids to be deleted!!");
