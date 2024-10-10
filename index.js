@@ -71,6 +71,20 @@ app.put("/question/:id", (req, res) => {
   });
 });
 
+app.delete("/questions", (req, res) => {
+  const quesIds = req.body.data;
+  const query = "DELETE FROM `bzr1y9jplzahkedywbh7`.`qa` WHERE id IN (?)";
+  if (!Array.isArray(quesIds) || quesIds.length == 0) {
+    return res.status(400).json("No ids to be deleted!!");
+  }
+  db.query(query, [quesIds], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Books has been deleted sucessfully");
+  });
+});
+
 app.listen(8080, () => {
   console.log("Listening to backend");
 });
+
+//bzr1y9jplzahkedywbh7
